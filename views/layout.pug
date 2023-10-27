@@ -10,3 +10,12 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
     body
     block content
+    script.
+      var mph = 20;
+      var change = 1;
+      function goFaster() {
+        mph += change;
+        change++;
+        var divFaster = document.getElementById('faster');
+        divFaster.innerText = `MPH ${mph} with change ${change}`;
+      }
