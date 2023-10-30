@@ -2,4 +2,47 @@ extends layout
 
 block content
   h1 Search Results - Organizations
-  
+  .container-fluid
+    .row
+      -
+        let results = [
+          {
+            organizationName: 'Bosch Global Software Technologies',
+            location: 'Hyderabad, India',
+            industry: 'Technology',
+            numberOfEmployees: 3000,
+            revenue: 50000000,
+            website: 'https://www.bosch-softwaretechnologies.com/en/our-company/about-us/'
+          },
+          {
+            organizationName: 'Wipro',
+            location: 'Whitefields, India',
+            industry: 'Technology',
+            numberOfEmployees: 50000,
+            revenue: 7000000,
+            website: 'https://www.wipro.com/'
+          },
+          {
+            organizationName: 'Apps Associates',
+            location: 'Uppal, India',
+            industry: 'Technology',
+            numberOfEmployees: 5000,
+            revenue: 7000000,
+            website: 'https://appsassociates.com/'
+          }
+        ]
+      - for (let item of results)
+        .col-sm-2
+          | Organization Name: #{item.organizationName}
+          br
+          | Location: #{item.location}
+          br
+          | Industry: #{item.industry}
+          br
+          | Number of Employees: #{item.numberOfEmployees}
+          br
+          | Revenue: #{item.revenue}
+          br
+          | Website: #{item.website}
+
+
