@@ -7,6 +7,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var organizationsRouter = require('./routes/organizations');
+var boardRouter = require('./routes/board');
 
 var app = express();
 
@@ -23,6 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/organizations', organizationsRouter);
+app.use('/board', boardRouter); 
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -38,6 +40,15 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+});
+
+
+
+app.get('/gridbuild', function(req, res, next) {
+  const query = req.query;
+  console.log(`rows ${query.rows}`);
+  console.log(`cols ${query.cols}`);
+  res.render('gridbuild', { title: 'Grid Builder', query: query });
 });
 
 module.exports = app;
