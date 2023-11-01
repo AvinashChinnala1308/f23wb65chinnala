@@ -35,7 +35,7 @@ const organizations = [
 ];
 
 router.get('/', (req, res) => {   
-    res.render('organizations', { title: 'Search Results - Organizations', results: organizations });
+    res.render('organizations', { title: 'Search Results - Organizations', a: organizations });
   });
   
   module.exports = router;

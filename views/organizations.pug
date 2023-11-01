@@ -4,7 +4,7 @@ block content
   h1= title
   .container-fluid
     .row
-      - for (let item of results)
+      - for (let item of a)
         .col-sm-2
           p Organization Name: #{item.organizationName}
           p Location: #{item.location}
@@ -16,10 +16,10 @@ block content
   h3= 'Buy'
 
   div(class="container-fluid")
-    each item,index in results
+    each item,index in a
       div(class="row", onclick=`buy(${index})`)
         div(class="col-sm-2") <br>organization #{index}: #{item.organizationName} Location: #{item.location} Industry: #{item.industry} Number of Employees: #{item.numberOfEmployees} Revenue: #{item.revenue} Website: #{item.website}
   script.
         function buy(p){
-          alert('You clicked Organization ' + p)       
+          alert('You clicked Organization ' + p)     
         }
