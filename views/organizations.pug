@@ -1,48 +1,25 @@
 extends layout
 
 block content
-  h1 Search Results - Organizations
+  h1= title
   .container-fluid
     .row
-      -
-        let results = [
-          {
-            organizationName: 'Bosch Global Software Technologies',
-            location: 'Hyderabad, India',
-            industry: 'Technology',
-            numberOfEmployees: 3000,
-            revenue: 50000000,
-            website: 'https://www.bosch-softwaretechnologies.com/en/our-company/about-us/'
-          },
-          {
-            organizationName: 'Wipro',
-            location: 'Whitefields, India',
-            industry: 'Technology',
-            numberOfEmployees: 50000,
-            revenue: 7000000,
-            website: 'https://www.wipro.com/'
-          },
-          {
-            organizationName: 'Apps Associates',
-            location: 'Uppal, India',
-            industry: 'Technology',
-            numberOfEmployees: 5000,
-            revenue: 7000000,
-            website: 'https://appsassociates.com/'
-          }
-        ]
       - for (let item of results)
         .col-sm-2
-          | Organization Name: #{item.organizationName}
-          br
-          | Location: #{item.location}
-          br
-          | Industry: #{item.industry}
-          br
-          | Number of Employees: #{item.numberOfEmployees}
-          br
-          | Revenue: #{item.revenue}
-          br
-          | Website: #{item.website}
+          p Organization Name: #{item.organizationName}
+          p Location: #{item.location}
+          p Industry: #{item.industry}
+          p Number of Employees: #{item.numberOfEmployees}
+          p Revenue: #{item.revenue}
+          p Website: #{item.website}
+  br
+  h3= 'Buy'
 
-
+  div(class="container-fluid")
+    each item,index in results
+      div(class="row", onclick=`buy(${index})`)
+        div(class="col-sm-2") <br>organization #{index}: #{item.organizationName} Location: #{item.location} Industry: #{item.industry} Number of Employees: #{item.numberOfEmployees} Revenue: #{item.revenue} Website: #{item.website}
+  script.
+        function buy(p){
+          alert('You clicked Organization ' + p)       
+        }
