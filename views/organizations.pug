@@ -2,24 +2,20 @@ extends layout
 
 block content
   h1= title
-  .container-fluid
-    .row
-      - for (let item of a)
-        .col-sm-2
-          p Organization Name: #{item.organizationName}
-          p Location: #{item.location}
-          p Industry: #{item.industry}
-          p Number of Employees: #{item.numberOfEmployees}
-          p Revenue: #{item.revenue}
-          p Website: #{item.website}
-  br
-  h3= 'Buy'
-
   div(class="container-fluid")
-    each item,index in a
-      div(class="row", onclick=`buy(${index})`)
-        div(class="col-sm-2") <br>organization #{index}: #{item.organizationName} Location: #{item.location} Industry: #{item.industry} Number of Employees: #{item.numberOfEmployees} Revenue: #{item.revenue} Website: #{item.website}
+    div(class="row")
+      each organization, index in a
+        div(class="col-sm-2")
+          h6 Organization #{index + 1}
+          p Organization Name: #{organization.organizationName}
+          p Location: #{organization.location}
+          p Industry: #{organization.industry}
+          p Number of Employees: #{organization.numberOfEmployees}
+          p Revenue: #{organization.revenue}
+          p Website: #{organization.website}
+          div(onclick=`buy(${index})`, class="btn btn-primary") Buy
+
   script.
-        function buy(p){
-          alert('You Purchased item ' + (p+1))     
-        }
+    function buy(p) {
+      alert(`You purchased item`+ (p+1));
+    }
